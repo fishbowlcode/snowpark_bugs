@@ -1,0 +1,39 @@
+definition_version: 1
+snowpark:
+  project_name: 'langchain_demo'
+  stage_name: 'stage'
+  src: 'app/'
+  procedures:
+    - name: embed_documents
+      handler: 'procedures.embed_documents'
+      runtime: '3.11'
+      signature:
+        - name: 'documents'
+          type: 'array'
+        - name: 'model_name'
+          default: ''
+          type: 'string'
+        - name: 'model_kwargs'
+          default: '{}'
+          type: 'object'
+        - name: 'encode_kwargs'
+          default: '{}'
+          type: 'object'
+      returns: array
+
+    - name: embed_query
+      handler: 'procedures.embed_query'
+      runtime: '3.11'
+      signature:
+        - name: 'query'
+          type: 'string'
+        - name: 'model_name'
+          default: ''
+          type: 'string'
+        - name: 'model_kwargs'
+          default: '{}'
+          type: 'object'
+        - name: 'encode_kwargs'
+          default: '{}'
+          type: 'object'
+      returns: string
